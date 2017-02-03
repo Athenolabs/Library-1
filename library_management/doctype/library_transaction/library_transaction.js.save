@@ -1,0 +1,12 @@
+// Copyright (c) 2016, Frappe and contributors
+// For license information, please see license.txt
+
+frappe.ui.form.on('Library Transaction', 'library_member',
+	function(frm) {
+		frappe.call({
+			"method": "frappe.client.get",
+			args: {
+				doctype: "Library Member",
+				name: frm.doc.library_member
+				}
+});
