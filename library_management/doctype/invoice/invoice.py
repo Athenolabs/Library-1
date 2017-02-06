@@ -16,3 +16,7 @@ class Invoice(Document):
 		frappe.sendmail(recipients=[email],
 			subject="Invoice details",
 			content=content)
+
+	def on_payment_authorized(self):
+		self.db_set("paid", 1)
+		self.db_set("amount", amount + self.amount)
