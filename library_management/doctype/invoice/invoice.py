@@ -8,9 +8,11 @@ from frappe.model.document import Document
 
 class Invoice(Document):
 	def on_submit(self):
-		date = frappe.get_value("Library Transaction", self.transaction_id, "transaction_date")
-		content = "Invoice generated for {0}, issued to {1} on {2}".format(self.article_name, self.member_first_name, date)
+		email = frappe.db.get_value("Library Member", self.member, "email_id")
+		member_name = frappe.db.get_value("Library Member", self.member, "first_name")
+		date = frappe.db.get_value("Library Transaction", self.transaction_id, "transaction_date")
+		content = "Invoice generated for {0}, issued to {1} on {2}".format(self.article_name, member_name, date)
 
-		frappe.sendmail(recipients=[self.email_id],
+		frappe.sendmail(recipients=[email],
 			subject="Invoice details",
 			content=content)
