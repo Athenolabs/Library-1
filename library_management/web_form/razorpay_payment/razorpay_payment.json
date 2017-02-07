@@ -17,7 +17,7 @@
  "is_standard": 1, 
  "login_required": 0, 
  "max_attachment_size": 0, 
- "modified": "2017-02-06 16:26:55.653209", 
+ "modified": "2017-02-07 14:56:17.278215", 
  "modified_by": "Administrator", 
  "module": "Library Management", 
  "name": "razorpay-payment", 
@@ -28,8 +28,8 @@
  "route": "razorpay-payment", 
  "show_sidebar": 1, 
  "sidebar_items": [], 
- "success_message": "Thank you for the membership payment!", 
- "success_url": "/payment", 
+ "success_message": "You're almost there! Just a few more minutes...", 
+ "success_url": "/success-payment", 
  "title": "Razorpay Payment", 
  "web_form_fields": [
   {

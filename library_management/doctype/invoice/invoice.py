@@ -10,13 +10,8 @@ class Invoice(Document):
 	def on_submit(self):
 		email = frappe.db.get_value("Library Member", self.member, "email_id")
 		member_name = frappe.db.get_value("Library Member", self.member, "first_name")
-		date = frappe.db.get_value("Library Transaction", self.transaction_id, "transaction_date")
-		content = "Invoice generated for {0}, issued to {1} on {2}".format(self.article_name, member_name, date)
+		content = "Library membership initiated for {0}. Please visit localhost:8000/razorpay-payment to complete the transaction.".format(member_name)
 
 		frappe.sendmail(recipients=[email],
 			subject="Invoice details",
 			content=content)
-
-	def on_payment_authorized(self):
-		self.db_set("paid", 1)
-		self.db_set("amount", amount + self.amount)

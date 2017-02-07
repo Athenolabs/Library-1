@@ -6,10 +6,10 @@ from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
 
-class LibraryMember(Document):
+class Receipt(Document):
 	def validate(self):
-		content = "Hello {0}, welcome to the Frappe Library!".format(self.first_name)
+		content = "Hi {0} {1}, your Frappe Library membership is confirmed!".format(self.member_first_name, member_last_name)
 
-		frappe.sendmail(recipients=[self.email_id],
-			subject= "Welcome!",
+		frappe.sendmail(recipients=[self.member_email_id],
+			subject="Frappe Library Membership Receipt",
 			content=content)
