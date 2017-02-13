@@ -8,8 +8,8 @@ from frappe.model.document import Document
 
 class LibraryMember(Document):
 	def validate(self):
-		content = "Hello {0}, welcome to the Frappe Library!".format(self.first_name)
+		content = "Hello {0} {1}, welcome to the Frappe Library!".format(self.first_name, self.last_name)
 
 		frappe.sendmail(recipients=[self.email_id],
-			subject= "Welcome!",
+			subject="Welcome!",
 			content=content)
